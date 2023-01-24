@@ -25,8 +25,8 @@ console.log(low_str);
 Запитайте ім'я користувача за допомогою методу prompt. 
 Виведіть за допомогою alert повідомлення 'Ваше ім'я {ім'я}'.	
 Посилання на ваш публічний репозиторій із оформленим рішенням завдань.*/
-let my_name = prompt("What is your name?");
-alert(`Your name is ${my_name}...`);
+let my_name1 = prompt("What is your name?");
+alert(`Your name is ${my_name1}...`);
 /* 
 Практика JS 4.
 Даний масив ['Саша', 'Петя', 'Оксана'], зробіть із нього ['Оксанa', 'Олег', 'Саша']. 
@@ -61,6 +61,12 @@ a > b ? alert(a+b)
 Виведіть на екран лише ті числа з масиву, які починаються на цифру 1, 2 чи 5.	
 Посилання на ваш публічний репозиторій із оформленим рішенням завдань. */
 let my_different_numbers = [10, 20, 30, 50, 235, 3000];
+for (n in my_different_numbers){
+  if (String(my_different_numbers[n]).startsWith("1") || String(my_different_numbers[n]).startsWith("2") || String(my_different_numbers[n]).startsWith("5")){
+    console.log(my_different_numbers[n]);
+  };
+}
+
   /* 
 Практика JS 7.
 Вага записана у змінну weight. 
@@ -70,6 +76,22 @@ let my_different_numbers = [10, 20, 30, 50, 235, 3000];
 Якщо вага більше 5.5 кг - 'Пора на тренування'. Як умови, використовуй значення weight 1, 3, 4, 5, 10. 
 Рекомендацію виводь у консоль.	
 Посилання на ваш публічний репозиторій із оформленим рішенням завдань.*/
+let weight = [1,3,4,5,10];
+let recomendation;
+for (i in weight){
+if (weight[i] < 4){
+  recomendation = "Time for snack!";
+  console.log(recomendation);
+}else 
+  if( weight[i] >= 4 && weight[i] <= 5 ){
+  recomendation = "Weight is normal!";
+  console.log(recomendation);
+}else 
+  if(weight[i] > 5.5){
+  recomendation = "Time for Exersise";
+  console.log(recomendation);
+}}
+
   /*
 Практика JS 8.
 Напишіть функцію, яка обчислює підсумкову оцінку студента в залежності від двох параметрів: 
@@ -92,7 +114,37 @@ let my_different_numbers = [10, 20, 30, 50, 235, 3000];
    finalGrade(55, 0) => 0
    finalGrade(20, 2) => 0
 Посилання на ваш публічний репозиторій із оформленим рішенням завдань.*/
-  /*
+
+function finalGrade(exam, projects){
+   let finalGrade;
+   if(exam > 90 || projects > 10){
+     finalGrade = 100;
+   }else 
+     if(exam > 75 || projects >= 5){
+       finalGrade = 90;
+     }else 
+       if(exam > 50 || projects >= 2){
+         finalGrade =  75;
+       }else{
+         finalGrade = 0;
+        }
+   
+   console.log(finalGrade);
+   return (finalGrade);
+ }
+
+finalGrade(100, 12);
+finalGrade(99, 0);
+finalGrade(10, 15);
+finalGrade(85, 5);
+finalGrade(55, 3);
+finalGrade(55, 0);
+finalGrade(20, 2);
+finalGrade(50, 1);
+finalGrade(50, 0);
+  
+
+/*
 Практика JS 9.
 Напишіть функцію, яка приймає масив, а повертає добуток елементів масиву, 
 помножених по порядку один на одного.
@@ -100,7 +152,21 @@ let my_different_numbers = [10, 20, 30, 50, 235, 3000];
 Приклад коду:
    example([1, 2, 3, 4]) => 1 * 2 * 3 * 4 = 24	
    Посилання на ваш публічний репозиторій із оформленим рішенням завдань.*/
-   /* 
+   let numbers = [1,2,3,4,5,6,7,8,9,10];
+   let numbers1 = [1,2,3,4]
+   function chosTake(numbers){
+     mult = 1;
+     for(i in numbers){
+       mult = mult * numbers[i]
+     };
+     console.log(mult);
+     return mult;
+   }
+   
+   chosTake(numbers);
+   chosTake(numbers1);
+
+/* 
 Практика JS 10.
 Напишіть функцію, яка прийматиме масив з іменами, і повертатиме масив, 
 але вже з віддаленими небажаними іменами. Масив із небажаними іменами має бути всередині вашої функції: 
@@ -111,7 +177,26 @@ const unwantedNames = [“Дима”, “Саша”, ”Ольга”, ”Ми
    example(['Олексій', 'Семен', 'Василиса', 'Діма', 'Максим', 'Ольга', ]) => ['Олексій','Семен','Василиса','Максим']
    example(['Алішер', 'Ольга', ]) => ['Алішер']
 Посилання на ваш публічний репозиторій із оформленим рішенням завдань. */
-   /*
+const example = ['Микита', 'Саша', 'Анастасія', 'Дима', 'Санич', 'Ольга', ];
+const example1 = ['Олексій', 'Семен', 'Василиса', 'Діма', 'Максим', 'Ольга', ];
+const example2 = ['Алішер', 'Ольга', ];
+function unwanted(names){
+  const unwantedNames = ['Дима', 'Саша', 'Ольга', 'Микита'];
+  let filtered = [];
+  for (i in names){
+    if (!(unwantedNames.includes(names[i]))){
+      filtered.push(names[i]);
+    };}
+  console.log(filtered);
+  return filtered;
+  
+}
+
+unwanted(example);
+unwanted(example1);
+unwanted(example2);
+
+/*
 Практика JS 11.
 У цій вправі повинні написати програму, яка прийматиме як параметри два масиви цілих чисел. 
 Необхідно знайти твір кожного масиву, після чого знайти різницю двох масивів, незалежно від того, 
@@ -126,6 +211,10 @@ const unwantedNames = [“Дима”, “Саша”, ”Ольга”, ”Ми
    example([4, 4, 7], [3, 9, 3]) => 31
    example([15, 20, 25], [10, 30, 25]) => 0
 Посилання на ваш публічний репозиторій із оформленим рішенням завдань.*/
+let s = [3, 2, 5];
+let m = [1, 4, 4];
+const sum = (s.reduce( (a, b) => a * b )) - (m.reduce( (a, b) => a * b ));
+console.log(sum);
     /*
 Практика JS 12.
 Завершіть функцію, яка приймає два цілих числа ( a, b, де a <  b) 
